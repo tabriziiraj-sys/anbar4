@@ -1,16 +1,15 @@
 @echo off
-chcp 65001 >nul
 echo ========================================
-echo   اجرای سیستم مدیریت انبار
+echo   Starting Inventory Management System
 echo ========================================
 echo.
 
-REM بررسی وجود node_modules
+REM Check if node_modules exists
 if not exist "node_modules" (
-    echo [هشدار] وابستگی‌ها نصب نشده‌اند!
-    echo ابتدا فایل install.bat را اجرا کنید.
+    echo [WARNING] Dependencies are not installed!
+    echo Please run install.bat first.
     echo.
-    echo آیا می‌خواهید وابستگی‌ها را نصب کنید؟ (Y/N)
+    echo Do you want to install dependencies now? (Y/N)
     set /p choice=
     if /i "%choice%"=="Y" (
         call install.bat
@@ -21,14 +20,14 @@ if not exist "node_modules" (
 )
 
 echo.
-echo در حال اجرای برنامه...
+echo Starting application...
 echo.
 echo ========================================
-echo   برنامه در آدرس زیر در دسترس است:
+echo   Application will be available at:
 echo   http://localhost:3000
 echo ========================================
 echo.
-echo برای توقف برنامه Ctrl+C را فشار دهید.
+echo Press Ctrl+C to stop the application.
 echo.
 
 call npm run dev
