@@ -9,11 +9,13 @@ import {
   ClipboardList,
   AlertTriangle,
   FileBarChart,
+  Database,
   Menu,
   X,
 } from 'lucide-react';
 import { useTheme } from './theme-provider';
 import { Sun, Moon } from 'lucide-react';
+import { DatabaseStatusIndicator } from './database-status-indicator';
 
 const navigation = [
   { name: 'داشبورد', href: '/', icon: LayoutDashboard },
@@ -24,6 +26,7 @@ const navigation = [
   { name: 'تراکنش‌ها', href: '/transactions', icon: ClipboardList },
   { name: 'موجودی کم', href: '/low-stock', icon: AlertTriangle },
   { name: 'گزارش‌ها', href: '/reports', icon: FileBarChart },
+  { name: 'مدیریت دیتابیس', href: '/database', icon: Database },
 ];
 
 const pageTitleMap: Record<string, string> = {
@@ -35,6 +38,7 @@ const pageTitleMap: Record<string, string> = {
   '/transactions': 'تاریخچه تراکنش‌ها',
   '/low-stock': 'محصولات با موجودی کم',
   '/reports': 'گزارش‌ها',
+  '/database': 'مدیریت دیتابیس',
 };
 
 function getPageTitle(pathname: string): string {
@@ -115,6 +119,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white">{pageTitle}</h2>
           </div>
           <div className="flex items-center gap-4">
+            <DatabaseStatusIndicator />
             <span className="hidden text-sm text-gray-500 dark:text-gray-400 sm:block">{today}</span>
             <button
               onClick={toggleTheme}
