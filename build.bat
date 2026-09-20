@@ -1,34 +1,33 @@
 @echo off
-chcp 65001 >nul
 echo ========================================
-echo   ساخت نسخه Production
+echo   Building Production Version
 echo ========================================
 echo.
 
-REM بررسی وجود node_modules
+REM Check if node_modules exists
 if not exist "node_modules" (
-    echo [خطا] وابستگی‌ها نصب نشده‌اند!
-    echo ابتدا فایل install.bat را اجرا کنید.
+    echo [ERROR] Dependencies are not installed!
+    echo Please run install.bat first.
     pause
     exit /b 1
 )
 
-echo در حال ساخت نسخه Production...
+echo Building production version...
 echo.
 call npm run build
 
 if %ERRORLEVEL% NEQ 0 (
     echo.
-    echo [خطا] ساخت با مشکل مواجه شد!
+    echo [ERROR] Build failed!
     pause
     exit /b 1
 )
 
 echo.
 echo ========================================
-echo   ساخت با موفقیت انجام شد!
+echo   Build completed successfully!
 echo ========================================
 echo.
-echo فایل‌های نهایی در پوشه dist قرار دارند.
+echo Output files are in the dist folder.
 echo.
 pause
